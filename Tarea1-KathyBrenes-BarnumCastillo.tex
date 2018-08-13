@@ -1,0 +1,190 @@
+\documentclass[letterpaper, 10pt, journal]{IEEEtran}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+
+\usepackage[justification=centering]{caption}
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\begin{document}
+\title{Tarea 1 - Reporte de \LaTeX}
+\author{Kathy~Brenes~Guerrero, Barnum~Castillo~Barquero
+
+~\IEEEmembership{
+    \begin{center}
+        Maestr\'ia en Ciencias de la Computaci\'on, Introducci\'on a la Investigaci\'on, ITCR
+    \end{center}
+}}% <-this % stops a space
+
+% The paper headers
+\markboth{Instituto Tecnol\'ogico de Costa Rica, Introducci\'on a la Investigaci\'on, Agosto~2018}%
+{Shell \MakeLowercase{\textit{et al.}}: Tarea 1 - Reporte de \LaTeX}
+\maketitle
+
+\begin{abstract}
+One of the biggest issues that an operating system can experience is privilege escalation. Privilege escalation is the act of exploiting a bug, design flaw, or configuration oversight in an operating system or software application to gain elevated access to resources that are normally protected from an application or user. Understanding the weaknesses and flaws of a security level issue for the operating system can help implement better approaches and techniques to improve the software itself. Just because you have updated your computer to the latest update or patch, doesn’t mean that it has been secured. Windows, for example, has a series of vulnerabilities that can affect the operating system and can't be solved by Microsoft because the updates can create incompatibilities with an older system or with some security protocols. The Privilege Escalation technique takes advantage of these vulnerabilities to  gain privileges (access) within a remote  system, in order to run applications and make commands on it. The focus of this paper is to list the vulnerabilities that have been demonstrated by third party systems in different operating system, and provide a technical point of view  on what can be done to avoid these breaches ( vulnerabilities or impacts). An Operation System breach can enable attackers to increase their level of control over target systems, such that they are free to access any data or make any configuration changes\cite{Williams}. This study reveals the importance of the way in which current systems should be defended from this mechanism.
+\end{abstract}
+\begin{IEEEkeywords}
+Operating System, Penetration Testing, Cybersecurity, Internet of Things.
+\end{IEEEkeywords}
+
+\section{Introduction}
+To start talking about vulnerabilities, it might be easier to start with past operating systems, specifically MS-DOS and Windows 9x (95, 98 and Me), which were based on MS-DOS.
+All software running on an MS-DOS-based system was treated equally. Any program could, literally, do anything. Any program could play directly with the hardware, poke around in memory being used by other programs, or even modify the operating system itself on the fly.
+
+It was not what we\'’d call \'“secure\'” in any way. We suppose the only thing that prevented it from being a security nightmare is that today’s ubiquitous connectivity didn\'’t exist. Compared to what we take for granted today, it was at least cumbersome, and often outright difficult, to get data from one computer to another. Since the kernel can do anything, we refer to it as having more privilege than software running in user-mode. There are a number of different things that can be restricted based on privilege, but memory access is one of the clearer examples
+
+A program running user-mode cannot read and write the memory of another program that happens to be running at the same time. Your web browser, for example, is not able to peek into the document you’re currently editing in a word processor.
+
+It’s important to understand that this concept of “privilege escalation” matters. Hopefully, understanding the concept — even at a high level and perhaps only partially — will give you some idea that it’s important, why it’s important, and how it relates to the security of your computer.
+
+Knowing that it’s important, the single most important thing you can do to avoid issues and vulnerabilities that might be characterized as “privilege escalation” issues is to keep your system as up-to-date as possible. As with the recent CPU issue, operating system vendors are quickly putting out patches to avoid it, and it’ll be important for you to have those patches when they come up.
+
+The best way to do that is to keep whatever OS you run — set to update automatically.Being always aware that keeping the operating system updated helps reduce the risk of these attacks but does not eradicate them 100%.
+
+\section{Historia del \LaTeX}
+
+Text here...
+
+\begin{enumerate}{
+    \item Interactive computing (time-sharing)
+    \item Hierarchical file systems
+    \item Fault tolerant structures
+    \item Interrupt systems
+    \item Automated overlays (virtual memory)
+    \item Multiprogramming
+    \item Modular programming
+    \item Controlled information sharing
+    \item Users
+\end{enumerate}
+
+text here ...
+
+\section{Usos acad\'emicos, extensi\'on, importancia}
+Text here ...
+
+\subsection{SubSection 1...}
+Text here..
+\begin{enumerate}
+\item	Some Windows services are configured to run under the Local System user account. A vulnerability such as a buffer overflow (an anomaly where a program, while writing data to a buffer, overruns the buffer\''s boundary and overwrites adjacent memory locations) may be used to execute arbitrary code with privilege elevated to Local System. Alternatively, a system service that is impersonating a lesser user can elevate that user\''s privileges if errors are not handled correctly while the user is being impersonated (e.g. if the user has introduced a malicious error handler)\cite{[6]}.
+\item	Under some legacy versions of the Microsoft Windows operating system, the All Users screen saver runs under the Local System account – any account that can replace the current screen saver binary in the file system or Registry can therefore elevate privileges \cite{[6]}.
+\item	In certain versions of the Linux kernel it was possible to write a program that would set its current directory to /etc/cron.d, request that a core dump be performed in case it crashes and then have itself killed by another process. The core dump file would have been placed at the program\''s current directory, that is, /etc/cron.d, and cron would have treated it as a text file instructing it to run programs on schedule. Because the contents of the file would be under attacker’s control, the attacker would be able to execute any program with root privileges \cite{[3]}.
+\end{enumerate}
+Text Here
+
+\section{Estilos de documento}
+Text Here
+\subsection{Subsection 1}
+Example...
+\lstset{language=Java}
+\begin{lstlisting}
+uname -a
+cat /proc/version
+cat /etc/issue
+\end{lstlisting}
+
+\subsection{Subsection 2}
+Text here...
+\begin{enumerate}
+\item Check which processes are running
+\lstset{language=Java}
+\begin{lstlisting}
+# Metasploit
+ps
+# Linux
+ps aux
+\end{lstlisting}
+\end{enumerate}
+
+
+\section{C\'omo hacer: p\'arrafos, efectos de letra, tildes, t\'itulos, subt\'itulos, referencias, marcas de agua, headers y footers, manejo de saltos de p\'agina, columnas de la p\'agina, etc.}
+\subsection{Subsection 1}
+Text here..
+
+\section{Manejo de tablas}
+\subsection{Subsection 1}
+Text here..
+
+\section{Manejo de figuras y gr\'aficos}
+\subsection{Subsection 1}
+Text here.
+
+\section{Manejo de figuras al lado de tablas (minipage)}
+\subsection{Subsection 1}
+Text here.
+
+\section{Ecuaciones matem\'aticas}
+\subsection{Subsection 1}
+Text here.
+
+\section{Manejo de colores}
+\subsection{Subsection 1}
+Text here.
+
+\begin{thebibliography}{1}
+\bibitem{paper1}A. Bryan  (2013) \emph{Vertical And Horizontal Privilege Escalation} [Blog post]. Retrieved from https://bryanavery.co.uk/vertical-and-horizontal-privilege-escalation/
+\bibitem{priv_esc_paper} A. Kurmus, N. Ioannou, M. Neugschwandtner, N. Papandreou \& T. Parnell \emph{From random block corruption to privilege escalation: A filesystem attack from rowhammer-like attacks} (Zurich, Switzerland, 2017).
+\bibitem{android_taxonomy} M. Rangwala, P. Zhang, X. Zou \& F. Li \emph{A taxonomy of privilege escalation attacks in Android applications} (Indianapolis, USA, 2014).
+\bibitem{Williams} Chandel, R. \emph{4 Ways to get Linux Privilege Escalation}, November, 2016.
+\bibitem{priv_esc_history} Stefano. \emph{Dirty Cow: Story of a privilege escalation vulnerability}, June, 2016.
+\bibitem{android}Lee, H., Kim, D., Park, M., & Cho, S. (2016).  \emph{Protecting data on android platform against privilege escalation attack. International Journal Of Computer Mathematics}, 93(2), 401-414.
+\bibitem{android2} X. Jiang,\emph{ GingerMaster: First Android Malware Utilizing a Root Exploit on Android 2.3 (Gingerbread)}.  Retrieved from http://wwwcsc.ncsu.edu/faculty/jiang/GingerMaster. 
+\bibitem{android3} H.-T. Lee, M. Park, and S.-J. Cho,\emph{ Detection and prevention of LeNa Malware on Android, J. Intern et Serv. Inf.
+Secur.} 3(3/4) (2013), pp. 63–71. 
+\bibitem{android4} M. Ongtang, S. McLaughlin, W. Enck, and P. McDaniel, \emph{Semantically rich application-centric security in Android},
+Secur. Commun. Netw. 5(6) (2009), pp. 658–673.
+
+\bibitem{android5} Y. Park, C. Lee, C. Lee, J. Lim, S. Han, M. Park, and S.-j. Cho, \emph{RGBDroid: A Novel Response-based Approach
+to Android Privilege Escalation Attacks, Proceedings of the 5th USENIX conference on Large-Scale Exploits and
+Emergent Threats (LEET’12)}, San Jose, CA, April, 2012.
+
+\bibitem{what_priv_esc} (2017) \emph{What Is Privilege Escalation ?} [Blog post]. Retrieved from https://affinity-it-security.com/what-is-privilege-escalation/
+
+\bibitem{priv_esc_vul} (2017, November 27) \emph{Privilege escalation vulnerability} Retrieved from https://www.alibabacloud.com/help/faq-detail/37533.htm
+\bibitem{linux_sec_summit} Nakamura, Y. \& Yamauchi, T. \emph{Proposal of a Method to Prevent Privilege Escalation Attacks for Linux Kernel} (September, 2015)
+\bibitem{que_es_esc_priv} Piscitello, D (2015) \emph{¿Qu\'e es el escalonamiento de privilegios?} [Blog post]. Retrieved from https://www.icann.org/news/blog/que-es-el-escalonamiento-de-privilegios
+
+\bibitem{tecnicas} (2018) \emph{Privilege Escalation Linux} [Blog post]. Retrieved from https://chryzsh.gitbooks.io/pentestbook/privilege\_escalation\_-\_linux.html .
+
+\bibitem{attack_and_defend} C. Long II, M \emph{Attack and Defend: Linux Privilege Escalation Techniques of 2016} (January, 2016).
+
+\bibitem{instalar_priv_esc} (2017) \emph{Consigue instalar siempre con escalada de privilegios} [Blog post]. Retrieved from http://www.enhacke.com/2017/02/28/escalada-de-privilegios/.
+
+\bibitem{dirty_cow} Wilfahrt, N. \emph{VulnerabilityDetails} (October, 2016).
+
+\bibitem{[1]} Privilege Escalation, Coleman Kane, Coleman.Kane@ge.com, February 9, 2015.
+\bibitem{[2]} Roch, Benjamin, "Monolithic kernel vs. Microkernel", 2004.
+\bibitem{[3]} Feroze, R. (2018, February 22). A guide to Linux Privilege Escalation. Retrieved from https://payatu.com/guide-linux-privilege-escalation/.
+\bibitem{[4]} iOS Hacker’s Handbook, Charlie Miller, Djon Blackakis, Dino Dai Xovi, Stefan Esser, Vincenzo Iozzo, Ralf-Phillip Weinmann, 2012.
+\bibitem{[5]} B. (2013, December 19). Vertical And Horizontal Privilege Escalation. Retrieved from https://bryanavery.co.uk/vertical-and-horizontal-privilege-escalation/ 
+\bibitem{[6]} Privilege Elevation - Microsoft Windows, Ivan Buetler, Compass Security, Q2/2007.
+\bibitem{history1}Denning, P. J. (2016). Fifty Years of Operating Systems. Communications Of The ACM, 59(3), 30-32. doi:10.1145/2880150
+
+\bibitem{Risk Sense}, \emph{ETERNALBLUE Exploit Analysis and Port to Microsoft Windows 10} (June, 2017).
+\bibitem{Khandelwal, S.} (2017, May 25). \emph{7-Year-Old Samba Flaw Lets Hackers Access Thousands of Linux PCs Remotely.} Retrieved from https://thehackernews.com/2017/05/samba-rce-exploit.html 
+
+
+\end{thebibliography}
+\end{document}
+
+
+
+
+
+
