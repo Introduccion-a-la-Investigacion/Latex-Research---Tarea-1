@@ -1,8 +1,8 @@
 # Latex-Research---Tarea-1
 
 # Dependecies
-sudo apt-get install texlive-latex-base
-sudo apt-get install texlive-fonts-recommended
-sudo apt-get install texlive-fonts-extra
+1. sudo apt-get install texlive-latex-base
+2. sudo apt-get install texlive-fonts-recommended
+3. sudo apt-get install texlive-fonts-extra
 
-pdflatex latex_source_name.tex
+4. pdflatex latex_source_name.tex
