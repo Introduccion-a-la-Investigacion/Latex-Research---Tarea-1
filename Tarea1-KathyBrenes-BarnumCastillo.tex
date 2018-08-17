@@ -3,8 +3,12 @@
 \usepackage{float}
 \usepackage{listings}
 \usepackage{color}
-
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
 \usepackage[justification=centering]{caption}
+
+\graphicspath{ {./Images/} }
+
 \lstset{frame=tb,
   language=Java,
   aboveskip=3mm,
@@ -60,21 +64,6 @@ The best way to do that is to keep whatever OS you run — set to update automat
 
 \section{Historia del \LaTeX}
 
-Text here...prueba
-
-\begin{enumerate}{
-    \item Interactive computing (time-sharing)
-    \item Hierarchical file systems
-    \item Fault tolerant structures
-    \item Interrupt systems
-    \item Automated overlays (virtual memory)
-    \item Multiprogramming
-    \item Modular programming
-    \item Controlled information sharing
-    \item Users
-\end{enumerate}
-
-text here ...
 
 \section{Usos acad\'emicos, extensi\'on, importancia}
 Text here ...
@@ -117,13 +106,209 @@ ps aux
 \subsection{Subsection 1}
 Text here..
 
-\section{Manejo de tablas}
-\subsection{Subsection 1}
-Text here..
+\section{Manejo de Tablas}
+\subsection{Tabla B\'asica}
+Texto
+\begin{table}[H]\centering
+\begin{tabular}{|l c|r|}
+\hline
+Columna 1 & Columna 2 & Columna 3 \\ \hline
+Fila 11   & Fila 12   & Fila 13   \\ \hline
+Fila 21   & Fila 22   & Fila 23   \\ \hline
+\end{tabular}
+\end{table}
+
+Texto
+\lstset{language=Java}
+\begin{lstlisting}
+\begin{table}[H]\centering
+\begin{tabular}{|l c|r|}
+\hline
+Columna 1 & Columna 2 & Columna 3 \\ \hline
+Fila 11   & Fila 12   & Fila 13   \\ \hline
+Fila 21   & Fila 22   & Fila 23   \\ \hline
+\end{tabular}
+\end{table}
+\end{lstlisting}
+
+\subsection{Agregar columnas y filas}
+
+Texto
+\lstset{language=Java}
+\begin{lstlisting}
+\begin{table}[H]\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Columna 1  & Columna 2 & Columna 3 & C.Nueva \\ \hline
+Fila 11    & Fila 12   & Fila 13   & \\ \hline
+Fila 21    & Fila 22   & Fila 23   & \\ \hline
+Nueva fila &           &           & \\ \hline
+\end{tabular}
+\end{table}
+\end{lstlisting}
+
+Texto
+\begin{table}[H]\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Columna 1  & Columna 2 & Columna 3 & C.Nueva \\ \hline
+Fila 11    & Fila 12   & Fila 13   & \\ \hline
+Fila 21    & Fila 22   & Fila 23   & \\ \hline
+Nueva fila &           &           & \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{M\'utiples columnas}
+
+Texto
+
+\lstset{language=Java}
+\begin{lstlisting}
+\multicolumn{ancho}{alineamiento}{contenido}
+\end{lstlisting}
+
+Texto 
+\begin{table}[H]\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Columna 1 & Columna 2  & Columna 3 \\ \hline
+\multicolumn{2}{|l|}{Fila 11 + fila 12} & Fila 13 \\ \hline
+Fila 21   & Fila 22    & Fila 23   \\ \hline
+\end{tabular}
+\end{table}
+
+texto
+
+\lstset{language=Java}
+\begin{lstlisting}
+\begin{table}[H]\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Columna 1 & Columna 2 & Columna 3 \\ \hline
+\multicolumn{2}{|l|}{Fila 11 + fila 12} & Fila 13 \\ \hline
+Fila 21   & Fila 22   & Fila 23   \\ \hline
+\end{tabular}
+\end{table}
+\end{lstlisting}
+Texto
+\subsection{M\'utiples filas}
+Texto
+
+\lstset{language=Java}
+\begin{lstlisting}
+\usepackage{multirow}
+\end{lstlisting}
+
+La siguiente tabla muestra su uso.
+\begin{table}[H]\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Columna 1                & Columna 2 & Columna 3 \\ \hline
+\multirow{2}{*}{Fila 11 + fila 21} & Fila 12   & Fila 13   \\ \cline{2-3} 
+                         & Fila 22   & Fila 23   \\ \hline
+\end{tabular}
+\end{table}
+
+\lstset{language=Java}
+\begin{lstlisting}
+\begin{table}[H]\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Columna 1                & Columna 2 & Columna 3 \\ \hline
+\multirow{2}{*}{Fila 11 + fila 21} & Fila 12   & Fila 13   \\ \cline{2-3} 
+                         & Fila 22   & Fila 23   \\ \hline
+\end{tabular}
+\end{table}
+\end{lstlisting}
+
+Texto
+
+\subsection{Colores celdas}
+
+\lstset{language=Java}
+\begin{lstlisting}
+\begin{table}[H]\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor[HTML]{FFCE93} 
+Columna 1                       & Columna 2 & Columna 3 \\ \hline
+\cellcolor[HTML]{3166FF}Fila 11 & Fila 12   & Fila 13   \\ \hline
+Fila 21                         & Fila 22   & Fila 23   \\ \hline
+\end{tabular}
+\end{table}
+\end{lstlisting}
+
+\begin{table}[H]\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor[HTML]{FFCE93} 
+Columna 1                       & Columna 2 & Columna 3 \\ \hline
+\cellcolor[HTML]{3166FF}Fila 11 & Fila 12   & Fila 13   \\ \hline
+Fila 21                         & Fila 22   & Fila 23   \\ \hline
+\end{tabular}
+\end{table}
 
 \section{Manejo de figuras y gr\'aficos}
-\subsection{Subsection 1}
-Text here.
+\subsection{Directorio de im\'agenes}
+\lstset{language=Java}
+\begin{lstlisting}
+%Ruta relativa al archivo .tex 
+\graphicspath{ {./images/} }
+
+%Ruta absoluta
+\graphicspath{ {c:/user/images/} }
+\end{lstlisting}
+
+\subsection{Modificar tama\~no y rotaci\'on}
+Text here.\\
+
+\lstset{language=Java}
+\begin{lstlisting}
+\includegraphics[scale=1]{latex-logo}
+\end{lstlisting}
+\includegraphics[scale=0.2]{latex-logo}
+
+\lstset{language=Java}
+\begin{lstlisting}
+\includegraphics[width=3cm, height=4cm]{latex-logo}
+\end{lstlisting}
+\includegraphics[width=3cm, height=4cm]{latex-logo}
+
+\lstset{language=Java}
+\begin{lstlisting}
+\includegraphics[width=\textwidth]{latex-logo}
+\end{lstlisting}
+Texto
+\lstset{language=Java}
+\begin{lstlisting}
+\includegraphics[scale=0.5, angle=45]{latex-logo}
+\end{lstlisting}
+\includegraphics[scale=0.1, angle=45]{latex-logo}
+
+\subsection{Posicionamiento}
+
+\lstset{language=Java}
+\begin{lstlisting}
+\begin{figure}[posicionamiento]
+\includegraphics[width=8cm]{latex-logo}
+\end{figure}
+\end{lstlisting}
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{cl}
+\hline
+\multicolumn{1}{l}{\textbf{Parámetro}} & \textbf{Posicionamiento}                                                                                                                                                                      \\ \hline
+h                                      & \begin{tabular}[c]{@{}l@{}}Coloque el flotador aquí, es decir, aproximadamente en el mismo punto en el que \\ aparece el texto fuente (sin embargo, no exactamente en el punto).\end{tabular} \\ \hline
+t                                      & Posición en la parte superior de la página.                                                                                                                                                   \\ \hline
+b                                      & Posición en la parte inferior de la página.                                                                                                                                                   \\ \hline
+p                                      & Se pone en una página especial para flotadores solamente.                                                                                                                                     \\ \hline
+!                                      & Anula los parámetros internos que LaTeX esté utilizando.                                                                                                                                      \\ \hline
+H                                      & \begin{tabular}[c]{@{}l@{}}Coloca el flotador exactamente en la ubicación del código LaTeX.\\  Requiere el paquete flotante. Esto es algo equivalente a h !.\end{tabular}                     \\ \hline
+\end{tabular}%
+}
+\end{table}
 
 \section{Manejo de figuras al lado de tablas (minipage)}
 \subsection{Subsection 1}
@@ -139,45 +324,7 @@ Text here.
 
 \begin{thebibliography}{1}
 \bibitem{paper1}A. Bryan  (2013) \emph{Vertical And Horizontal Privilege Escalation} [Blog post]. Retrieved from https://bryanavery.co.uk/vertical-and-horizontal-privilege-escalation/
-\bibitem{priv_esc_paper} A. Kurmus, N. Ioannou, M. Neugschwandtner, N. Papandreou \& T. Parnell \emph{From random block corruption to privilege escalation: A filesystem attack from rowhammer-like attacks} (Zurich, Switzerland, 2017).
-\bibitem{android_taxonomy} M. Rangwala, P. Zhang, X. Zou \& F. Li \emph{A taxonomy of privilege escalation attacks in Android applications} (Indianapolis, USA, 2014).
-\bibitem{Williams} Chandel, R. \emph{4 Ways to get Linux Privilege Escalation}, November, 2016.
-\bibitem{priv_esc_history} Stefano. \emph{Dirty Cow: Story of a privilege escalation vulnerability}, June, 2016.
-\bibitem{android}Lee, H., Kim, D., Park, M., & Cho, S. (2016).  \emph{Protecting data on android platform against privilege escalation attack. International Journal Of Computer Mathematics}, 93(2), 401-414.
-\bibitem{android2} X. Jiang,\emph{ GingerMaster: First Android Malware Utilizing a Root Exploit on Android 2.3 (Gingerbread)}.  Retrieved from http://wwwcsc.ncsu.edu/faculty/jiang/GingerMaster. 
-\bibitem{android3} H.-T. Lee, M. Park, and S.-J. Cho,\emph{ Detection and prevention of LeNa Malware on Android, J. Intern et Serv. Inf.
-Secur.} 3(3/4) (2013), pp. 63–71. 
-\bibitem{android4} M. Ongtang, S. McLaughlin, W. Enck, and P. McDaniel, \emph{Semantically rich application-centric security in Android},
-Secur. Commun. Netw. 5(6) (2009), pp. 658–673.
 
-\bibitem{android5} Y. Park, C. Lee, C. Lee, J. Lim, S. Han, M. Park, and S.-j. Cho, \emph{RGBDroid: A Novel Response-based Approach
-to Android Privilege Escalation Attacks, Proceedings of the 5th USENIX conference on Large-Scale Exploits and
-Emergent Threats (LEET’12)}, San Jose, CA, April, 2012.
-
-\bibitem{what_priv_esc} (2017) \emph{What Is Privilege Escalation ?} [Blog post]. Retrieved from https://affinity-it-security.com/what-is-privilege-escalation/
-
-\bibitem{priv_esc_vul} (2017, November 27) \emph{Privilege escalation vulnerability} Retrieved from https://www.alibabacloud.com/help/faq-detail/37533.htm
-\bibitem{linux_sec_summit} Nakamura, Y. \& Yamauchi, T. \emph{Proposal of a Method to Prevent Privilege Escalation Attacks for Linux Kernel} (September, 2015)
-\bibitem{que_es_esc_priv} Piscitello, D (2015) \emph{¿Qu\'e es el escalonamiento de privilegios?} [Blog post]. Retrieved from https://www.icann.org/news/blog/que-es-el-escalonamiento-de-privilegios
-
-\bibitem{tecnicas} (2018) \emph{Privilege Escalation Linux} [Blog post]. Retrieved from https://chryzsh.gitbooks.io/pentestbook/privilege\_escalation\_-\_linux.html .
-
-\bibitem{attack_and_defend} C. Long II, M \emph{Attack and Defend: Linux Privilege Escalation Techniques of 2016} (January, 2016).
-
-\bibitem{instalar_priv_esc} (2017) \emph{Consigue instalar siempre con escalada de privilegios} [Blog post]. Retrieved from http://www.enhacke.com/2017/02/28/escalada-de-privilegios/.
-
-\bibitem{dirty_cow} Wilfahrt, N. \emph{VulnerabilityDetails} (October, 2016).
-
-\bibitem{[1]} Privilege Escalation, Coleman Kane, Coleman.Kane@ge.com, February 9, 2015.
-\bibitem{[2]} Roch, Benjamin, "Monolithic kernel vs. Microkernel", 2004.
-\bibitem{[3]} Feroze, R. (2018, February 22). A guide to Linux Privilege Escalation. Retrieved from https://payatu.com/guide-linux-privilege-escalation/.
-\bibitem{[4]} iOS Hacker’s Handbook, Charlie Miller, Djon Blackakis, Dino Dai Xovi, Stefan Esser, Vincenzo Iozzo, Ralf-Phillip Weinmann, 2012.
-\bibitem{[5]} B. (2013, December 19). Vertical And Horizontal Privilege Escalation. Retrieved from https://bryanavery.co.uk/vertical-and-horizontal-privilege-escalation/ 
-\bibitem{[6]} Privilege Elevation - Microsoft Windows, Ivan Buetler, Compass Security, Q2/2007.
-\bibitem{history1}Denning, P. J. (2016). Fifty Years of Operating Systems. Communications Of The ACM, 59(3), 30-32. doi:10.1145/2880150
-
-\bibitem{Risk Sense}, \emph{ETERNALBLUE Exploit Analysis and Port to Microsoft Windows 10} (June, 2017).
-\bibitem{Khandelwal, S.} (2017, May 25). \emph{7-Year-Old Samba Flaw Lets Hackers Access Thousands of Linux PCs Remotely.} Retrieved from https://thehackernews.com/2017/05/samba-rce-exploit.html 
 
 
 \end{thebibliography}
