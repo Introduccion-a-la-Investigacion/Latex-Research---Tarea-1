@@ -343,7 +343,7 @@ t                                      & Posici\'on en la parte superior de la p
 b                                      & Posici\'on en la parte inferior de la p\'agina.                                                                                                                                                   \\ \hline
 p                                      & Se pone en una p\'agina especial para flotadores solamente.                                                                                                                                     \\ \hline
 !                                      & Anula los par\'ametros internos que LaTeX est\'e utilizando.                                                                                                                                      \\ \hline
-H                                      & \begin{tabular}[c]{@{}l@{}}Coloca el flotador exactamente en la ubicaci\'on del c\'odigo LaTeX.\\  Requiere el paquete flotante. Esto es algo equivalente a h !.\end{tabular}                     \\ \hline
+H                                      & \begin{tabular}[c]{@{}l@{}}Coloca el flotador exactamente en la ubicaci\'on del c\'odigo \\LaTeX. Requiere el paquete flotante. Esto es algo equiva-\\lente a h!.\end{tabular}                     \\ \hline
 \end{tabular}
 \end{table}
 \subsection{Referenciar figuras}
@@ -351,15 +351,15 @@ Texto
 \lstset{language=Java}
 \begin{lstlisting}
 \begin{figure}[h]
-    \centering
-    \includegraphics[width=0.25\textwidth]{grafico}
-    \label{fig:refejem1}
+\centering
+\includegraphics[width=0.25\textwidth]{grafico}
+\label{fig:refejem1}
 \end{figure}
  
 Como puede ver en la figura \ref{fig:refejem1}, en la P.# \pageref{fig:refejem1}.
 \end{lstlisting}
 
-Texto 
+Las referencias una vez compiladas se ven como:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.25\textwidth]{grafico}
@@ -370,10 +370,114 @@ Texto
 En la figura \ref{fig:refejem1} en la P.\# \pageref{fig:refejem1}.
 
 \section{Manejo de figuras al lado de tablas (minipage)}
+El minipage es una funcionalidad de Latex utilizada para poner lado a lado estructuras que de otra forma ser\'{\i}a dif\'{\i}cil, su armaz\'{o}n en c\'{o}digo se ve como:
 
+\begin{lstlisting}
+\begin{minipage}[ajuste]{ancho del minipage}
+  Texto ... \ \
+  Imagenes ... \ \
+  Tablas ... \ \
+\end{minipage} 
+\end{lstlisting}
 
-\subsection{Subsection 1}
-Text here.
+Partiendo de esta implementaci\'{o}n se pueden crear diferentes configuraciones.
+
+Ejemplo de tabla + tabla.
+
+\begin{lstlisting}
+\begin{minipage}{0.2\textwidth}
+\begin{tabular}{|c|c|c|}
+\hline
+ A & B & C \\
+\hline
+ 1 & 2 & 3  \\
+\hline 
+ 4 & 5 & 6 \\
+\hline
+\end{tabular}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+\begin{tabular}{c|c|c}
+ A & B & C \\
+\hline
+ 1 & 2 & 3  \\
+\hline 
+ 4 & 5 & 6 \\
+\end{tabular}
+\end{minipage}
+\end{lstlisting}
+
+\begin{minipage}{0.2\textwidth}
+\begin{tabular}{|c|c|c|}
+\hline
+ A & B & C \\
+\hline
+ 1 & 2 & 3  \\
+\hline 
+ 4 & 5 & 6 \\
+\hline
+\end{tabular}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+\begin{tabular}{c|c|c}
+ A & B & C \\
+\hline
+ 1 & 2 & 3  \\
+\hline 
+ 4 & 5 & 6 \\
+\end{tabular}
+\end{minipage}
+\\
+\\
+Ejemplo de imagen + texto.
+
+\begin{lstlisting}
+\begin{minipage}[t]{0.2\textwidth}
+\includegraphics[scale=0.4]{tec-logo}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+Tecnologico de CR\\
+Tecnologico de CR\\
+Tecnologico de CR\\
+Tecnologico de CR\\
+Tecnologico de CR\\
+\end{minipage}
+\end{lstlisting}
+
+\begin{minipage}[t]{0.2\textwidth}
+\includegraphics[scale=0.4]{tec-logo}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+Tecnol\'{o}gico de CR\\
+Tecnol\'{o}gico de CR\\
+Tecnol\'{o}gico de CR\\
+Tecnol\'{o}gico de CR\\
+Tecnol\'{o}gico de CR\\
+\end{minipage}
+
+Ejemplos de imagen + imagen + imagen.
+
+\begin{lstlisting}
+\begin{minipage}[b]{0.15\textwidth}
+\includegraphics[width=\textwidth]{tec-logo}
+\end{minipage}
+\begin{minipage}[t]{0.15\textwidth}
+\includegraphics[width=\textwidth]{tec-logo}
+\end{minipage}
+\begin{minipage}[t]{0.15\textwidth}
+\includegraphics[width=\textwidth]{tec-logo}
+\end{minipage}
+\end{lstlisting}
+
+\begin{minipage}[b]{0.15\textwidth}
+\includegraphics[width=\textwidth]{tec-logo}
+\end{minipage}
+\begin{minipage}[t]{0.15\textwidth}
+\includegraphics[width=\textwidth]{tec-logo}
+\end{minipage}
+\begin{minipage}[t]{0.15\textwidth}
+\includegraphics[width=\textwidth]{tec-logo}
+\end{minipage}
 
 \section{Ecuaciones matem\'aticas}
 \subsection{Subsection 1}
