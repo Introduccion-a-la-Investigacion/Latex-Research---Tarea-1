@@ -1,12 +1,15 @@
 \documentclass[letterpaper, 10pt, journal]{IEEEtran}
 \usepackage{graphicx}
 \usepackage{float}
+% Paquete para las lineas de codigo
 \usepackage{listings}
+% Paquetes utilizados en la seccion de tablas
 \usepackage{color}
 \usepackage{multirow}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage[justification=centering]{caption}
-
+% Paquete para referenciar figuras
+\usepackage{nameref}
 \graphicspath{ {./Images/} }
 
 \lstset{frame=tb,
@@ -107,8 +110,11 @@ ps aux
 Text here..
 
 \section{Manejo de Tablas}
+Durante esta secci\'{o}n se estar\'{a}n discutiendo el atributo de Latex de creaci\'{o}n de tablas, partiendo del ejemplo de \textquotedblleft{}Tabla b\'{a}sica\textquotedblright{} incluyendo su c\'{o}digo en Latex hasta las diferentes caracter\'{\i}sticas para personalizarla seg\'{u}n las necesidades.
+
 \subsection{Tabla B\'asica}
-Texto
+La siguiente tabla refleja la implementaci\'{o}n m\'{a}s b\'{a}sica, por razones de claridad se le ha agregado las l\'{\i}neas negras.
+
 \begin{table}[H]\centering
 \begin{tabular}{|l c|r|}
 \hline
@@ -118,7 +124,8 @@ Fila 21   & Fila 22   & Fila 23   \\ \hline
 \end{tabular}
 \end{table}
 
-Texto
+El c\'{o}digo de la tabla es el siguiente:
+
 \lstset{language=Java}
 \begin{lstlisting}
 \begin{table}[H]\centering
@@ -131,9 +138,14 @@ Fila 21   & Fila 22   & Fila 23   \\ \hline
 \end{table}
 \end{lstlisting}
 
+El comienzo de la tabla se representa con \textbackslash begin\textbackslash\{tabular\}, dentro de esta secci\'{o}n se describe el contenido de la tabla (Columna 1, Columna 2, etc), la separaci\'{o}n de la columna se da por \& y el de cada fila por \textbackslash\textbackslash. 
+
+La alineaci\'on del texto se da por \{\textbar l\textbar c\textbar r\textbar\} siendo l = left, c = center, r = right y los s\'{\i}mbolos pipe (\textquotedblleft{}\textbar{}\textquotedblright{}) representa el delineado de las columnas, para delinear las l\'ineas horizontales se hace uso del \textbackslash{}hline al final de cada fila.
+
 \subsection{Agregar columnas y filas}
 
-Texto
+Tomando el ejemplo de tabla b\'asica y agreg\'andole una nueva columna y una nueva fila da como resultado el siguiente c\'odigo.
+
 \lstset{language=Java}
 \begin{lstlisting}
 \begin{table}[H]\centering
@@ -147,7 +159,8 @@ Nueva fila &           &           & \\ \hline
 \end{table}
 \end{lstlisting}
 
-Texto
+Las diferencias notorias como resultado de agregar la nueva fila y columna son \textquotedblleft{}Nueva fila \& \& \& \& \textbackslash{}\textbackslash{}hline\textquotedblright{} al final del c\'{o}digo que representa a la fila y en todas las columnas se ha agregado un \& dando la siguiente tabla.
+
 \begin{table}[H]\centering
 \begin{tabular}{|l|l|l|l|}
 \hline
@@ -159,15 +172,15 @@ Nueva fila &           &           & \\ \hline
 \end{table}
 
 \subsection{M\'utiples columnas}
-
-Texto
+Para el proceso de combinar columnas en una misma fila es necesario el comando:
 
 \lstset{language=Java}
 \begin{lstlisting}
 \multicolumn{ancho}{alineamiento}{contenido}
 \end{lstlisting}
 
-Texto 
+Teniendo en cuenta la l\'{\i}nea anterior y si lo agregamos al c\'{o}digo de tabla b\'{a}sica resulta en:
+
 \begin{table}[H]\centering
 \begin{tabular}{|l|l|l|}
 \hline
@@ -177,7 +190,7 @@ Fila 21   & Fila 22    & Fila 23   \\ \hline
 \end{tabular}
 \end{table}
 
-texto
+Conociendo la funci\'{o}n del comando multicolumn, podemos ver el c\'{o}digo agregado al de tabla b\'{a}sica y explicar su funcionamiento.
 
 \lstset{language=Java}
 \begin{lstlisting}
@@ -190,16 +203,19 @@ Fila 21   & Fila 22   & Fila 23   \\ \hline
 \end{tabular}
 \end{table}
 \end{lstlisting}
-Texto
+
+\{2\} es la cantidad de columnas que se expandi\'{o} la celda, \{\textbar{}l\textbar{}\} es la delineaci\'{o}n vertical de la celda m\'{a}s la alineaci\'{o}n del texto y el \'{u}ltimo par\'{a}metro es el contenido \textquotedblleft{}Fila 11 + fila12\textquotedblright{}.
+
 \subsection{M\'utiples filas}
-Texto
+La funcionalidad de combinar filas es dada por el paquete.
 
 \lstset{language=Java}
 \begin{lstlisting}
 \usepackage{multirow}
 \end{lstlisting}
 
-La siguiente tabla muestra su uso.
+La siguiente tabla ejemplifica su uso.
+
 \begin{table}[H]\centering
 \begin{tabular}{|l|l|l|}
 \hline
@@ -221,9 +237,10 @@ Columna 1                & Columna 2 & Columna 3 \\ \hline
 \end{table}
 \end{lstlisting}
 
-Texto
+Como se puede apreciar \textbackslash{}multirows tiene los mismos par\'{a}metros que multicolumns con la diferencia en que \{2\} indica la cantidad de filas a ser combinadas.
 
 \subsection{Colores celdas}
+Para agregar color a la tabla basta el uso de dos comandos \textbackslash{}rowcolor y \textbackslash{}cellcolor, en el siguiente c\'{o}digo se muestra la ubicaci\'{o}n correspondiente de cada uno.
 
 \lstset{language=Java}
 \begin{lstlisting}
@@ -247,9 +264,12 @@ Columna 1                       & Columna 2 & Columna 3 \\ \hline
 Fila 21                         & Fila 22   & Fila 23   \\ \hline
 \end{tabular}
 \end{table}
+
+Se puede mostrar que ambos comandos hacen uso del c\'{o}digo del color, pero se diferencian en que \textbackslash{}cellcolor s\'{o}lo es aplicado a una celda y \textbackslash{}rowcolor a toda la fila.
 
 \section{Manejo de figuras y gr\'aficos}
 \subsection{Directorio de im\'agenes}
+
 \lstset{language=Java}
 \begin{lstlisting}
 %Ruta relativa al archivo .tex 
@@ -294,21 +314,43 @@ Texto
 \end{figure}
 \end{lstlisting}
 
+Texto 
+
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
 \begin{tabular}{cl}
 \hline
-\multicolumn{1}{l}{\textbf{Parámetro}} & \textbf{Posicionamiento}                                                                                                                                                                      \\ \hline
-h                                      & \begin{tabular}[c]{@{}l@{}}Coloque el flotador aquí, es decir, aproximadamente en el mismo punto en el que \\ aparece el texto fuente (sin embargo, no exactamente en el punto).\end{tabular} \\ \hline
-t                                      & Posición en la parte superior de la página.                                                                                                                                                   \\ \hline
-b                                      & Posición en la parte inferior de la página.                                                                                                                                                   \\ \hline
-p                                      & Se pone en una página especial para flotadores solamente.                                                                                                                                     \\ \hline
-!                                      & Anula los parámetros internos que LaTeX esté utilizando.                                                                                                                                      \\ \hline
-H                                      & \begin{tabular}[c]{@{}l@{}}Coloca el flotador exactamente en la ubicación del código LaTeX.\\  Requiere el paquete flotante. Esto es algo equivalente a h !.\end{tabular}                     \\ \hline
-\end{tabular}%
-}
+\multicolumn{1}{l}{\textbf{Par\'ametro}} & \textbf{Posicionamiento}                                                                                                                                                                      \\ \hline
+h                                      & \begin{tabular}[c]{@{}l@{}}Coloque el flotador aqu\'i, es decir, aproximadamente en el\\ mismo punto en el que aparece el texto fuente (sin embargo,\\ no exactamente en el punto).\end{tabular} \\ \hline
+t                                      & Posici\'on en la parte superior de la p\'agina.                                                                                                                                                   \\ \hline
+b                                      & Posici\'on en la parte inferior de la p\'agina.                                                                                                                                                   \\ \hline
+p                                      & Se pone en una p\'agina especial para flotadores solamente.                                                                                                                                     \\ \hline
+!                                      & Anula los par\'ametros internos que LaTeX est\'e utilizando.                                                                                                                                      \\ \hline
+H                                      & \begin{tabular}[c]{@{}l@{}}Coloca el flotador exactamente en la ubicaci\'on del c\'odigo LaTeX.\\  Requiere el paquete flotante. Esto es algo equivalente a h !.\end{tabular}                     \\ \hline
+\end{tabular}
 \end{table}
+\subsection{Referenciar figuras}
+Texto 
+\lstset{language=Java}
+\begin{lstlisting}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.25\textwidth]{grafico}
+    \label{fig:refejem1}
+\end{figure}
+ 
+Como puede ver en la figura \ref{fig:refejem1}, en la P.# \pageref{fig:refejem1}.
+\end{lstlisting}
+
+Texto 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\textwidth]{grafico}
+    \caption{refejem1}
+    \label{fig:refejem1}
+\end{figure}
+ 
+En la figura \ref{fig:refejem1} en la P.\# \pageref{fig:refejem1}.
 
 \section{Manejo de figuras al lado de tablas (minipage)}
 \subsection{Subsection 1}
