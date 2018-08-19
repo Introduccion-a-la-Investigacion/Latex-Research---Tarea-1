@@ -268,7 +268,10 @@ Fila 21                         & Fila 22   & Fila 23   \\ \hline
 Se puede mostrar que ambos comandos hacen uso del c\'{o}digo del color, pero se diferencian en que \textbackslash{}cellcolor s\'{o}lo es aplicado a una celda y \textbackslash{}rowcolor a toda la fila.
 
 \section{Manejo de figuras y gr\'aficos}
+En esta secci\'{o}n del documento se explica las funcionalidades de Latex con respecto al manejos de gr\'{a}ficos.
+
 \subsection{Directorio de im\'agenes}
+Cuando se agrega una referencia a una imagen en un documento .tex, esta cuando sea compilada por el Latex buscara a la imagen en el directorio en el que se encuentra el .tex. A continuaci\'{o}n, se presentan las formas en las que se puede modificar dicho directorio.
 
 \lstset{language=Java}
 \begin{lstlisting}
@@ -279,26 +282,40 @@ Se puede mostrar que ambos comandos hacen uso del c\'{o}digo del color, pero se 
 \graphicspath{ {c:/user/images/} }
 \end{lstlisting}
 
+Ambas formas tienen que incorporarse al principio del .tex.
+
 \subsection{Modificar tama\~no y rotaci\'on}
-Text here.\\
+La imagen por insertar en el documento tiene que existir en directorio de im\'{a}genes especificado en el Latex. El c\'{o}digo para insertarlo es el siguiente.
 
 \lstset{language=Java}
 \begin{lstlisting}
 \includegraphics[scale=1]{latex-logo}
 \end{lstlisting}
+
+Se recalca que la imagen latex-logo no tiene extensi\'{o}n de archivo. 
+La imagen a continuaci\'{o}n es el resultado del c\'{o}digo anterior y ser\'{a} utilizada como punto de referencia para las dem\'{a}s modificaciones.
+
 \includegraphics[scale=0.2]{latex-logo}
+
+En el c\'{o}digo el tama\~{n}o de la imagen puede ser modificado por [scale=1] con un valor mayor o menor, o puede ser cambiado por [width=x cm, height= x cm].
 
 \lstset{language=Java}
 \begin{lstlisting}
 \includegraphics[width=3cm, height=4cm]{latex-logo}
 \end{lstlisting}
+
 \includegraphics[width=3cm, height=4cm]{latex-logo}
+
+El cambio se observa como:
 
 \lstset{language=Java}
 \begin{lstlisting}
 \includegraphics[width=\textwidth]{latex-logo}
 \end{lstlisting}
-Texto
+
+Como adici\'{o}n a lo anterior, se puede tomar el ancho del texto como referencia para el ancho de la imagen con \textbackslash{}textwidth.\par{}
+La modificaci\'{o}n de la orientaci\'{o}n de la imagen se ve cambiado por el par\'{a}metro angle en t\'{e}rminos de 360 grados.
+
 \lstset{language=Java}
 \begin{lstlisting}
 \includegraphics[scale=0.5, angle=45]{latex-logo}
@@ -353,6 +370,8 @@ Texto
 En la figura \ref{fig:refejem1} en la P.\# \pageref{fig:refejem1}.
 
 \section{Manejo de figuras al lado de tablas (minipage)}
+
+
 \subsection{Subsection 1}
 Text here.
 
