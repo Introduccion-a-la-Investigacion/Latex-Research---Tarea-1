@@ -11,6 +11,9 @@
 % Paquete para referenciar figuras
 \usepackage{nameref}
 \graphicspath{ {./Images/} }
+% Paquetes para las funciones matematicas
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 \lstset{frame=tb,
   language=Java,
@@ -480,16 +483,123 @@ Ejemplos de imagen + imagen + imagen.
 \end{minipage}
 
 \section{Ecuaciones matem\'aticas}
-\subsection{Subsection 1}
-Text here.
+En este segmento se presentan las caracter\'{\i}sticas b\'{a}sicas para generar f\'{o}rmulas matem\'{a}ticas en Latex.
+
+\subsection{Modo matem\'{a}ticas}
+Latex permite dos tipos de f\'{o}rmulas: inline y display, la primera permite escribir la f\'{o}rmula en l\'{\i}nea con el texto y la segunda lo opuesto, por lo que cuando se escriba ocupar\'{a} una l\'{\i}nea completa por si sola.\par
+Las f\'{o}rmulas \textquotedblleft{}inline\textquotedblright{} se caracterizan por estar delimitadas por \textdollar{}formula\textdollar{} y las \textquotedblleft{}display\textquotedblright{} por \textdollar{}\textdollar{}formula\textdollar{}\textdollar{} o \textbackslash{}begin\{equation\} formula \textbackslash{}end\{equation\}. Cabe recalcar que en el modo inline las expresiones son compresas para seguir con la l\'{\i}nea del texto.
+
+Ejemplo de inline:
+
+\begin{lstlisting}
+La formula $E=MC^2$ fue formulada por Einstein anos despues de presentar su teoria de la relativadad.
+\end{lstlisting}
+
+La f\'{o}rmula $E=MC^2$ fue formulada por Einstein a\~{n}os despu\'{e}s de presentar su teor\'{i}a de la relativadad.
+
+Ejemplo de display:
+\begin{lstlisting}
+La formula $$E=MC^2$$ fue formulada por Einstein anos despues de presentar su teoria de la relativadad.En unidades naturales ($c$ = 1), representa la identidad
+
+\begin{equation}
+E = m
+\end{equation}
+\end{lstlisting}
+La f\'{o}rmula $$E=MC^2$$ fue formulada por Einstein a\~{n}os despu\'{e}s de presentar su teor\'{i}a de la relativadad.En unidades naturales ($c$ = 1), representa la identidad
+
+\begin{equation}
+E = m
+\end{equation}
+
+\subsection{S\'{i}mbolos especiales}
+La utilizaci\'{o}n de s\'{\i}mbolos especiales se da por el modo matem\'{a}tica explicado en el punto anterior, solamente basta escribir \textbackslash{}simbolo dentro de los \textdollar{} \textdollar{}.
+
+\begin{lstlisting}
+$$\delta \alpha$$
+\end{lstlisting}
+
+$$\delta \alpha$$
+
+\subsection{Fracciones}
+
+Las fracciones pueden ser utilizadas en conjunto con el texto $\frac{1}{2} $ o por si solas con los modos inline y display.
+
+$$\frac{1}{2} $$
+
+Las fracciones son muy vers\'{a}tiles, pudiendo ser anidadas para expresiones complejas.
+
+\begin{lstlisting}
+Ejemplo sencillo:
+
+$$\frac{1}{2}$$
+
+Ejemplo anidado:
+ 
+$$ \frac{1+\frac{a}{b}}{1+\frac{1}{1+\frac{1}{a}}} $$
+ 
+\end{lstlisting}
+
+Ejemplo sencillo:
+
+$$\frac{1}{2}$$
+
+Ejemplo anidado:
+ 
+$$ \frac{1+\frac{a}{b}}{1+\frac{1}{1+\frac{1}{a}}} $$
+ 
+\subsection{Operadores}
+El manejo de operadores es muy variado por lo que a continuaci\'{o}n se explican los m\'{a}s utilizados.
+
+$$\int_{a}^{b} x^2 dx$$
+
+Las integrales como la anterior son definidas en Latex como:
+
+\begin{lstlisting}
+\int_{superior}^{inferior}
+
+$$\int_{a}^{b} x^2 dx$$
+\end{lstlisting}
+
+Integrales anidadas pueden resultar más complejas, pero se pueden obtener modificando el inicio de la expresión (int) como en los siguientes ejemplos:
+\begin{lstlisting}
+$$\iint_V \mu(u,v) \,du\,dv$$
+$$\iiint_V \mu(u,v,w) \,du\,dv\,dw$$
+$$\idotsint_V \mu(u_1,\dots,u_k) \,du_1 \dots du_k$$
+\end{lstlisting}
+
+$$\iint_V \mu(u,v) \,du\,dv$$
+$$\iiint_V \mu(u,v,w) \,du\,dv\,dw$$
+$$\idotsint_V \mu(u_1,\dots,u_k) \,du_1 \dots du_k$$
+
+Al igual que las integrales, las sumatorias est\'{a}n dadas por:
+\begin{lstlisting}
+\sum_{superior}^{inferior}
+
+Ejemplo:
+Sum $\sum_{n=1}^{\infty} 2^{-n} = 1$ inside text
+\end{lstlisting}
+
+$$\sum_{n=1}^{\infty} 2^{-n} = 1$$
+
+En el caso de los l\'{i}mites se utiliza el comando
+
+\begin{lstlisting}
+\lim_{lower}
+
+Ejemplo:
+$$\lim_{x\to\infty} f(x)$$
+\end{lstlisting}
+
+$$\lim_{x\to\infty} f(x)$$
 
 \section{Manejo de colores}
 \subsection{Subsection 1}
 Text here.
 
 \begin{thebibliography}{1}
-\bibitem{paper1}A. Bryan  (2013) \emph{Vertical And Horizontal Privilege Escalation} [Blog post]. Retrieved from https://bryanavery.co.uk/vertical-and-horizontal-privilege-escalation/
-
+\bibitem{a} \emph{Latex-Tutorial.} (2018). Consultado desde https://www.latex-tutorial.com
+\bibitem{b} \emph{ShareLatex.} (2018). Consultado desde https://www.sharelatex.com/learn
+\bibitem{c} \emph{Sascha-Frank.} (2018). Consultado desde http://www.sascha-frank.com
 
 
 \end{thebibliography}
