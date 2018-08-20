@@ -593,8 +593,74 @@ $$\lim_{x\to\infty} f(x)$$
 $$\lim_{x\to\infty} f(x)$$
 
 \section{Manejo de colores}
-\subsection{Subsection 1}
-Text here.
+El manejo de colores en Latex est\'{a} dado por los paquetes
+
+\begin{lstlisting}
+\usepackage{color}
+\usepackage{xcolor}
+\end{lstlisting}
+
+Ambos paquetes permiten la manipulaci\'{o}n de colores, pero a la vez tiene la flexibilidad de modificar los colores y secciones a gusto. El siguiente ejemplo muestra los colores predefinidos.
+
+\begin{lstlisting}
+\begin{itemize}
+\color{blue}
+\item Primer item
+\item Segundo item
+\end{itemize}
+ 
+\noindent
+{\color{red} \rule{\linewidth}{0.5mm} }
+\end{lstlisting}
+
+\begin{itemize}
+\color{blue}
+\item Primer item
+\item Segundo item
+\end{itemize}
+ 
+\noindent
+{\color{red} \rule{\linewidth}{0.5mm} }
+
+Los colores red y blue est\'{a} predefinidos en el paquete color, algunos otros ejemplos b\'{a}sicos son.
+
+\begin{lstlisting}
+El color del texto puede ser cambiado a \textcolor{red}{rojo}. Tambien puede cambiar el background del \colorbox{BurntOrange}{texto}.
+\end{lstlisting}
+
+El color del texto puede ser cambiado a \textcolor{red}{rojo}. Tambien puede cambiar el background del \colorbox{orange}{texto}.\par{}
+
+Para una mayor variedad de colores se pueden crear variables de color d\'{a}ndole una etiqueta a un valor RGB.
+
+\begin{lstlisting}
+\definecolor{rosado}{rgb}{0.858, 0.188, 0.478}
+\definecolor{gris}{gray}{0.6}
+\end{lstlisting}
+
+\definecolor{rosado}{rgb}{0.858, 0.188, 0.478}
+\definecolor{gris}{gray}{0.6}
+
+\begin{enumerate}
+\item \textcolor{rosado}{Rosado}
+\item \textcolor{gris}{Gris}
+\end{enumerate}
+
+El definecolor utiliza una de las siguientes 4 opciones para el primer par\'{a}metro.
+
+\begin{enumerate}
+\item \textbf{rgb}: rojo, verde, azul. Tres valores separados por comas entre 0 y 1 definen los componentes del color.
+\item \textbf{RGB}: lo mismo que rgb, pero los n\'{u}meros son enteros entre 0 y 255.
+\item \textbf{cmyk}: cian, magenta, amarillo y blacK. Lista de cuatro n\'{u}meros separados por comas entre 0 y 1 que determina el color de acuerdo con el modelo aditivo utilizado en la mayor\'{\i}a de las impresoras.
+\item \textbf{gray}: escala de grises. Un solo n\'{u}mero entre 0 y 1.
+\end{enumerate}
+
+Adem\'{a} de modificar el color del texto de puede cambiar el color de la p\'{a}gina con
+
+\begin{lstlisting}
+\pagecolor{black}
+\end{lstlisting}
+
+\includegraphics[scale=1]{ejemplofondo}
 
 \begin{thebibliography}{1}
 \bibitem{a} \emph{Latex-Tutorial.} (2018). Consultado desde https://www.latex-tutorial.com
