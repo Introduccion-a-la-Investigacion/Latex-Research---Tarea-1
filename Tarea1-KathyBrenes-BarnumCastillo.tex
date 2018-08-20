@@ -214,26 +214,251 @@ Document text (text with embedded LaTeX commands)
 \end{document}
 \end{lstlisting}
 \section{Uso de elementos}
-\subsection{P\'arrafos}
-Text here..
+
+
+\subsection{P\'arrafos y Saltos de L\'inea}
+
+Para comenzar un nuevo p\'{a}rrafo en LaTeX se debe dejar una l\'{\i}nea en blanco en el medio. Hay otra manera de comenzar un nuevo p\'{a}rrafo, mira el siguiente fragmento de c\'{o}digo.
+\begin{lstlisting}
+This is the text in first paragraph. This is the text in first 
+paragraph. This is the text in first paragraph. \par
+This is the text in second paragraph. This is the text in second 
+paragraph. This is the text in second paragraph.
+\end{lstlisting}
+This is the text in first paragraph. This is the text in first 
+paragraph. This is the text in first paragraph. \par
+This is the text in second paragraph. This is the text in second 
+paragraph. This is the text in second paragraph.
+
+Como puede ver, el comando \textbackslash{} par tambi\'{e}n comienza un nuevo p\'{a}rrafo.
+\newline
+De forma predeterminada, los p\'{a}rrafos tienen una sangr\'{\i}a de 1.5 veces el tama\~{n}o del punto de la fuente actual. Adem\'{a}s, no hay espacios en blanco adicionales insertados entre los p\'{a}rrafos. 
+\newline
+Otra forma de crear p\'arrafos es atrav\'es de los entornos. Los entornos en LaTeX son zonas del fichero fuente delimitadas por los comandos \textbackslash begin y \textbackslash end que sirven para dar instrucciones al compilador LaTeX sobre su comportamiento en el interior de \'estos. Los entornos tienen la siguiente apariencia: \cite{[7]}
+\begin{lstlisting}
+\begin{Entorno}
+Texto          
+\end{Entorno}  
+\end{lstlisting}
+
+donde Entorno es el nombre del entorno que queremos utilizar y Texto es el texto al que se le aplican las instrucciones indicadas por el entorno.
+\newline
+Los entornos que se utilizan para la alineaci\'on de p\'arrafos son los siguientes:
+\newline
+Entorno center para centrar el texto.
+Entorno flushleft para alinear el texto a la izquierda.
+Entorno flushright para alinear el texto a la derecha.
+\newline
+Un ejemplo claro de estos tres tipos es el siguiente:
+\begin{lstlisting}
+\documentclass{article}
+\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
+
+\begin{document}
+\begin{flushleft}
+Este párrafo está alineado a la izquierda. Los siguientes párrafos serán una copia de éste cambiando el tipo de alineación.
+\end{flushleft}
+
+\begin{center}
+Este párrafo está centrado. Los siguientes párrafos serán una copia de éste cambiando el tipo de alineación.
+\end{center}
+
+\begin{flushright}
+Este párrafo está alineado a la derecha. Los siguientes párrafos serán una copia de éste cambiando el tipo de alineación.
+\end{flushright}
+
+Por último tenemos un párrafo cuya alineación es la del entorno por defecto en \LaTeX.
+
+Esto es todo por hoy.\\Hasta pronto.
+\end{document}
+\end{lstlisting}
+
+Que visualmente se puede apreciar de la siguiente manera:
+
+\begin{flushleft}
+Este p\'arrafo est\'a alineado a la izquierda. Los siguientes p\'arrafos ser\'an una copia de \'este cambiando el tipo de alineaci\'on.
+\end{flushleft}
+
+\begin{center}
+Este p\'arrafo est\'a centrado. Los siguientes p\'arrafos ser\'an una copia de \'este cambiando el tipo de alineaci\'on.
+\end{center}
+
+\begin{flushright}
+Este p\'arrafo est\'a alineado a la derecha. Los siguientes p\'arrafos ser\'an una copia de \'este cambiando el tipo de alineaci\'on.
+\end{flushright}
+
+Por \'ultimo tenemos un p\'arrafo cuya alineaci\'on es la del entorno por defecto en \LaTeX.
+
+Esto es todo por hoy.\\Hasta pronto.
+
+Con este ejemplo podemos observar dos formas distintas de realizar un salto de l\'inea:
+
+\begin{enumerate}
+\item Dejando una l\'inea en blanco en el fichero fuente. As\'i se ha hecho en el ejemplo para que aparezca en otra línea el texto “Esto es todo por hoy”.
+\item  A\~nadiendo \textbackslash \textbackslash al final de la l\'inea. En el ejemplo esto se ha utilizado para añadir un salto de línea entre “Esto es todo por hoy” y “Hasta pronto”. En este caso el párrafo siguiente no aparece con sangría en la primera línea.
+\item Utilizando el comando \textbackslash newline.
+\end{enumerate}
+
+Otra forma de alinear un p\'arrafo es por medio de Sangr\'ia de p\'arrafo
+Por defecto, LaTeX no deja sangr\'ia en el primer p\'arrafo de una secci\'on. El tama\~no de las sangr\'ias del p\'arrafo posterior est\'a determinado por el par\'ametro. \textbackslash parindent
+\begin{lstlisting}
+\setlength{\parindent}{10ex}
+This is the text in first paragraph. This is the text in first 
+paragraph. This is the text in first paragraph. \par
+\noindent %The next paragraph is not indented
+This is the text in second paragraph. This is the text in second 
+paragraph. This is the text in second paragraph.
+
+\end{lstlisting}
+
+\setlength{\parindent}{10ex}
+This is the text in first paragraph. This is the text in first 
+paragraph. This is the text in first paragraph. \par
+\noindent %The next paragraph is not indented
+This is the text in second paragraph. This is the text in second 
+paragraph. This is the text in second paragraph.
+
+
+La longitud predeterminada de este par\'{a}metro est\'{a} establecida por la clase de documento utilizada. Es posible cambiar el tama\~{n}o de sangr\'{\i}a del p\'{a}rrafo usando el comando \textbackslash{} setlength. En el ejemplo, los p\'{a}rrafos siguientes \textbackslash{} setlength \{\textbackslash{} parindent\} \{10ex\} tendr\'{a}n una sangr\'{\i}a de 10ex (un "ex" equivale a la longitud de la "x" en la fuente actual)
+\newline
+Si desea crear un p\'{a}rrafo sin sangr\'{\i}a, como el segundo en el ejemplo, puede usar el comando \textbackslash{} noindent al principio del p\'{a}rrafo.
+\newline
+Si desea sangr\'{\i}ar en un p\'{a}rrafo que no la tiene, puede usar \textbackslash{} indent encima de \'{e}l. Se debe tener en cuenta que este comando solo tendr\'{a} un efecto cuando \textbackslash{} parindent no se establezca en cero.
+
+
 \subsection{Efectos de letra}
-Text here..
+En este art\'{\i}culo se explicar\'{a}n tres herramientas b\'{a}sicas de formato de texto: cursiva, negrita y subrayado. Comencemos con un ejemplo: 
+\begin{lstlisting}
+Some of the \textbf{greatest} 
+discoveries in \underline{science} 
+were made by \textbf{\textit{accident}}.
+\end{lstlisting}
+
+Some of the \textbf{greatest} discoveries in \underline{science} were made by \textbf{\textit{accident}}.
+\newline
+Como puede ver, hay tres comandos b\'{a}sicos y se pueden anidar para obtener efectos combinados.
+\newline
+\textbf{Cursiva:} para que un texto en cursiva sea sencillo, utilice el comando \textbackslash{} textit.
+\newline
+\textbf{Negrita:} para hacer un texto en negrita, use el comando \textbackslash{} textbf.
+\newline
+\textbf{Subrayado:} Resaltar texto: tambi\'{e}n es muy simple, use el comando \textbackslash{} underline.
+\newline
+\textbf{\'{E}nfasis en el texto:} el texto se puede enfatizar usando el comando \textbackslash{} emph. A veces, el comando \textbackslash{} emph se comporta igual que \textbackslash{} textit, pero no es exactamente el mismo.
+
 \subsection{Tildes}
-Text here..
-\subsection{T\'itulos}
-Text here..
-\subsection{Subt\'itulos}
-Text here..
+Se recomienda utilzar comandos como \textbackslash{}'a para producir la letra acentuada \textquotedblleft{}\'{a}\textquotedblright{}. E incluso se menciona al paquete spanish de babel que te permite simplificar \'{e}sto un poco y escribir simplemente 'a.
+
+\subsection{T\'itulos y Subt\'itulos}
+La mayor\'ia de los t\'itulos y subt\'itulos se establecen por medio de los Chapters o Sections que se desglosan a su vez en sub cap\'itulos y sub secciones que forman a ser parte de los subt\'itulos como lo podemos visualizar en el siguiente ejemplo.
+\begin{lstlisting}
+    \section{Titulo}
+        \subsection{Subtitulo}
+\end{lstlisting}
 \subsection{Referencias}
-Text here..
+Para las referencias se puede utilizar el entorno thebibliography que se emplea de la siguiente manera:
+\begin{lstlisting}
+\begin{thebibliography}{1}
+\bibitem{[1]}The Editors of Encyclopaedia Britannica  (2013) \emph{LaTeX COMPUTER PROGRAMMING LANGUAGE} [Blog post]. Consultado desde ...
+\bibitem{[2]} \emph{Introduction to LaTeX.} (2018). Consultado desde ...
+\bibitem{[3]} \emph{Basic description of file types and how LaTeX works.} (2018). Consultado desde ...
+\bibitem{a} \emph{Latex-Tutorial.} (2018). Consultado desde ...
+\bibitem{b} \emph{ShareLatex.} (2018). Consultado desde ...
+\bibitem{c} \emph{Sascha-Frank.} (2018). Consultado desde ...
+\bibitem{[7]} \emph{Alineación de párrafos.} (2018). Consultado desde ...
+
+\end{thebibliography}
+\end{lstlisting}
+
+En el ejemplo anterior se puede observar que los caracteres que se encuentran entre \{\} corresponden al nombre del elemento que se desea citar, para utilizarlo se emplea el uso de \textbackslash cite\{ nombre de la referencia\}.
 \subsection{Marcas de agua}
-Text here..
+Se utiliza el paquete \textbackslash{} usepackage \{draftwatermark\} para insertar la marca de agua en cada p\'{a}gina. Por defecto, la marca de agua se agrega a todas las p\'{a}ginas. Para insertar solo en la primera p\'{a}gina, se utiliza \textbackslash{} usepackage [firstpage] \{draftwatermark\}. El texto predeterminado de la marca de agua es DRAFT. Para insertar un texto de marca de agua diferente se utiliza 
+\textbackslash{} SetWatermarkText \{Text Reporte 1 :) \}
+
+Para cambiar la claridad u oscuridad se utiliza el comando \textbackslash{}SetWatermarkLightness \{0.5\} El valor de luminosidad oscila entre 1.0 para blanco y 0.0 para negro. Por defecto est\'{a} configurado a 0.8.
+
+
 \subsection{Headers y Footers}
-Text here..
-\subsection{ Manejo de saltos de p\'agina}
-Text here..
+LaTeX tiene algunos estilos predeterminados que cambian la forma en que se muestran el encabezado y el pie de p\'{a}gina. El pie de p\'{a}gina y el encabezado tambi\'{e}n se pueden personalizar para adaptarse a cualquier dise\~{n}o en particular.
+\newline
+La informaci\'{o}n que se muestra en el pie de p\'{a}gina y el encabezado de un documento depende del estilo de p\'{a}gina actualmente activo, estos estilos de p\'{a}gina son m\'{a}s notorios en la clase de documento del libro.
+\begin{lstlisting}
+\documentclass[a4paper,12pt,twoside]{book}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+ 
+\pagestyle{headings}
+ 
+\begin{document}
+\chapter{Sample Chapter}
+\section{New section}
+ 
+Hello, here is some text without a meaning.  This text should 
+show what aprinted text will look like at this place.  If you 
+read this text, you will get noinformation.  Really?  Is there 
+no information?  Is there a diㄦence betweenthis text and some 
+nonsense like Huardest gefburn?  Kjift { not at all!...
+ 
+\end{document}
+\end{lstlisting}
+El comando \textbackslash{} pagestyle \{encabezados\} establece el estilo de p\'{a}gina llamado encabezados en el documento actual.
+
 \subsection{Columnas de la p\'agina}
-Text here..
+Los documentos de dos columnas se pueden crear f\'{a}cilmente pasando el par\'{a}metro \textbackslash{} twocolumn a la declaraci\'{o}n de la clase del documento. Si necesita m\'{a}s flexibilidad en el dise\~{n}o de la columna, o para crear un documento con varias columnas, el paquete multicol proporciona un conjunto de comandos para eso.
+Una herramienta flexible para manejar documentos de m\'{u}ltiples columnas en LATEX es multicol, por ejemplo:
+\begin{lstlisting}
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+ 
+\usepackage{multicol}
+ 
+\begin{document}
+\begin{multicols}{3}
+[
+\section{First Section}
+All human things are subject to decay. And when fate summons, Monarchs must obey.
+]
+Hello, here is some text without a meaning.  This text should show what 
+a printed text will look like at this place.
+If you read this text, you will get no information.  Really?  Is there 
+no information?  Is there...
+\end{multicols}
+ 
+\end{document}
+\end{lstlisting}
+
+Para importar el paquete, la l\'{\i}nea \textbackslash{} usepackage \{multicol\}
+se agrega al pre\'{a}mbulo. Una vez que se importa el paquete, se pueden usar las multicolumnas del entorno. El entorno toma dos par\'{a}metros.
+
+N\'{u}mero de columnas, este par\'{a}metro debe pasarse dentro de llaves. Su valor es 3 en el ejemplo. Cualquier comando LATEX se puede usar aqu\'{\i}, excepto elementos flotantes como figuras y tablas. En el ejemplo, el t\'{\i}tulo de la secci\'{o}n y un peque\~{n}o p\'{a}rrafo se establecen aqu\'{\i}.
+El texto incluido dentro de las etiquetas \textbackslash{} begin \{multicols\} y \textbackslash{} end \{multicols\} se imprime en formato de varias columnas.
+
+\textbf{Separaci\'{o}n de columnas:} la separaci\'{o}n de columnas est\'{a} determinada por \textbackslash{} columnsep.
+\begin{lstlisting}
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+ 
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+ 
+\begin{document}
+\begin{multicols}{2}
+[
+\section{First Section}
+All human things are subject to decay. And when fate summons, Monarchs must obey.
+]
+Hello, here is some text without a meaning.  This text should show what 
+a printed text will look like at this place.
+If you read this text, you will get no information.  Really?  Is there 
+no information?  Is there...
+\end{multicols}
+ 
+\end{document}
+\end{lstlisting}
+Aqu\'{\i}, el comando \textbackslash{} setlength \{\textbackslash{} columnsep\} \{1cm\} establece la separaci\'{o}n de la columna en 1 cm.
 
 
 \section{Manejo de Tablas}
@@ -793,7 +1018,7 @@ Adem\'{a} de modificar el color del texto de puede cambiar el color de la p\'{a}
 \bibitem{a} \emph{Latex-Tutorial.} (2018). Consultado desde https://www.latex-tutorial.com
 \bibitem{b} \emph{ShareLatex.} (2018). Consultado desde https://www.sharelatex.com/learn
 \bibitem{c} \emph{Sascha-Frank.} (2018). Consultado desde http://www.sascha-frank.com
-
+\bibitem{[7]} \emph{Alineación de párrafos.} (2018). Consultado desde https://latextips.wordpress.com/2009/01/27/alineacion-de-parrafos/
 
 \end{thebibliography}
 \end{document}
