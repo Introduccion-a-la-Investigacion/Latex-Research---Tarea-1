@@ -3,6 +3,15 @@
 \usepackage{float}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage[justification=centering]{caption}
+% Paquete para referenciar figuras
+\usepackage{nameref}
+\graphicspath{ {./Images/} }
+% Paquetes para las funciones matematicas
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 \usepackage[justification=centering]{caption}
 \lstset{frame=tb,
@@ -226,32 +235,564 @@ Text here..
 \subsection{Columnas de la p\'agina}
 Text here..
 
-\section{Manejo de tablas}
-\subsection{Subsection 1}
-Text here..
+
+\section{Manejo de Tablas}
+Durante esta secci\'{o}n se estar\'{a}n discutiendo el atributo de Latex de creaci\'{o}n de tablas, partiendo del ejemplo de \textquotedblleft{}Tabla b\'{a}sica\textquotedblright{} incluyendo su c\'{o}digo en Latex hasta las diferentes caracter\'{\i}sticas para personalizarla seg\'{u}n las necesidades.
+
+\subsection{Tabla B\'asica}
+La siguiente tabla refleja la implementaci\'{o}n m\'{a}s b\'{a}sica, por razones de claridad se le ha agregado las l\'{\i}neas negras.
+
+\begin{table}[H]\centering
+\begin{tabular}{|l c|r|}
+\hline
+Columna 1 & Columna 2 & Columna 3 \\ \hline
+Fila 11   & Fila 12   & Fila 13   \\ \hline
+Fila 21   & Fila 22   & Fila 23   \\ \hline
+\end{tabular}
+\end{table}
+
+El c\'{o}digo de la tabla es el siguiente:
+
+\lstset{language=Java}
+\begin{lstlisting}
+\begin{table}[H]\centering
+\begin{tabular}{|l c|r|}
+\hline
+Columna 1 & Columna 2 & Columna 3 \\ \hline
+Fila 11   & Fila 12   & Fila 13   \\ \hline
+Fila 21   & Fila 22   & Fila 23   \\ \hline
+\end{tabular}
+\end{table}
+\end{lstlisting}
+
+El comienzo de la tabla se representa con \textbackslash begin\textbackslash\{tabular\}, dentro de esta secci\'{o}n se describe el contenido de la tabla (Columna 1, Columna 2, etc), la separaci\'{o}n de la columna se da por \& y el de cada fila por \textbackslash\textbackslash. 
+
+La alineaci\'on del texto se da por \{\textbar l\textbar c\textbar r\textbar\} siendo l = left, c = center, r = right y los s\'{\i}mbolos pipe (\textquotedblleft{}\textbar{}\textquotedblright{}) representa el delineado de las columnas, para delinear las l\'ineas horizontales se hace uso del \textbackslash{}hline al final de cada fila.
+
+\subsection{Agregar columnas y filas}
+
+Tomando el ejemplo de tabla b\'asica y agreg\'andole una nueva columna y una nueva fila da como resultado el siguiente c\'odigo.
+
+\lstset{language=Java}
+\begin{lstlisting}
+\begin{table}[H]\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Columna 1  & Columna 2 & Columna 3 & C.Nueva \\ \hline
+Fila 11    & Fila 12   & Fila 13   & \\ \hline
+Fila 21    & Fila 22   & Fila 23   & \\ \hline
+Nueva fila &           &           & \\ \hline
+\end{tabular}
+\end{table}
+\end{lstlisting}
+
+Las diferencias notorias como resultado de agregar la nueva fila y columna son \textquotedblleft{}Nueva fila \& \& \& \& \textbackslash{}\textbackslash{}hline\textquotedblright{} al final del c\'{o}digo que representa a la fila y en todas las columnas se ha agregado un \& dando la siguiente tabla.
+
+\begin{table}[H]\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Columna 1  & Columna 2 & Columna 3 & C.Nueva \\ \hline
+Fila 11    & Fila 12   & Fila 13   & \\ \hline
+Fila 21    & Fila 22   & Fila 23   & \\ \hline
+Nueva fila &           &           & \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{M\'utiples columnas}
+Para el proceso de combinar columnas en una misma fila es necesario el comando:
+
+\lstset{language=Java}
+\begin{lstlisting}
+\multicolumn{ancho}{alineamiento}{contenido}
+\end{lstlisting}
+
+Teniendo en cuenta la l\'{\i}nea anterior y si lo agregamos al c\'{o}digo de tabla b\'{a}sica resulta en:
+
+\begin{table}[H]\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Columna 1 & Columna 2  & Columna 3 \\ \hline
+\multicolumn{2}{|l|}{Fila 11 + fila 12} & Fila 13 \\ \hline
+Fila 21   & Fila 22    & Fila 23   \\ \hline
+\end{tabular}
+\end{table}
+
+Conociendo la funci\'{o}n del comando multicolumn, podemos ver el c\'{o}digo agregado al de tabla b\'{a}sica y explicar su funcionamiento.
+
+\lstset{language=Java}
+\begin{lstlisting}
+\begin{table}[H]\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Columna 1 & Columna 2 & Columna 3 \\ \hline
+\multicolumn{2}{|l|}{Fila 11 + fila 12} & Fila 13 \\ \hline
+Fila 21   & Fila 22   & Fila 23   \\ \hline
+\end{tabular}
+\end{table}
+\end{lstlisting}
+
+\{2\} es la cantidad de columnas que se expandi\'{o} la celda, \{\textbar{}l\textbar{}\} es la delineaci\'{o}n vertical de la celda m\'{a}s la alineaci\'{o}n del texto y el \'{u}ltimo par\'{a}metro es el contenido \textquotedblleft{}Fila 11 + fila12\textquotedblright{}.
+
+\subsection{M\'utiples filas}
+La funcionalidad de combinar filas es dada por el paquete.
+
+\lstset{language=Java}
+\begin{lstlisting}
+\usepackage{multirow}
+\end{lstlisting}
+
+La siguiente tabla ejemplifica su uso.
+
+\begin{table}[H]\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Columna 1                & Columna 2 & Columna 3 \\ \hline
+\multirow{2}{*}{Fila 11 + fila 21} & Fila 12   & Fila 13   \\ \cline{2-3} 
+                         & Fila 22   & Fila 23   \\ \hline
+\end{tabular}
+\end{table}
+
+\lstset{language=Java}
+\begin{lstlisting}
+\begin{table}[H]\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Columna 1                & Columna 2 & Columna 3 \\ \hline
+\multirow{2}{*}{Fila 11 + fila 21} & Fila 12   & Fila 13   \\ \cline{2-3} 
+                         & Fila 22   & Fila 23   \\ \hline
+\end{tabular}
+\end{table}
+\end{lstlisting}
+
+Como se puede apreciar \textbackslash{}multirows tiene los mismos par\'{a}metros que multicolumns con la diferencia en que \{2\} indica la cantidad de filas a ser combinadas.
+
+\subsection{Colores celdas}
+Para agregar color a la tabla basta el uso de dos comandos \textbackslash{}rowcolor y \textbackslash{}cellcolor, en el siguiente c\'{o}digo se muestra la ubicaci\'{o}n correspondiente de cada uno.
+
+\lstset{language=Java}
+\begin{lstlisting}
+\begin{table}[H]\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor[HTML]{FFCE93} 
+Columna 1                       & Columna 2 & Columna 3 \\ \hline
+\cellcolor[HTML]{3166FF}Fila 11 & Fila 12   & Fila 13   \\ \hline
+Fila 21                         & Fila 22   & Fila 23   \\ \hline
+\end{tabular}
+\end{table}
+\end{lstlisting}
+
+\begin{table}[H]\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor[HTML]{FFCE93} 
+Columna 1                       & Columna 2 & Columna 3 \\ \hline
+\cellcolor[HTML]{3166FF}Fila 11 & Fila 12   & Fila 13   \\ \hline
+Fila 21                         & Fila 22   & Fila 23   \\ \hline
+\end{tabular}
+\end{table}
+
+Se puede mostrar que ambos comandos hacen uso del c\'{o}digo del color, pero se diferencian en que \textbackslash{}cellcolor s\'{o}lo es aplicado a una celda y \textbackslash{}rowcolor a toda la fila.
 
 \section{Manejo de figuras y gr\'aficos}
-\subsection{Subsection 1}
-Text here.
+En esta secci\'{o}n del documento se explica las funcionalidades de Latex con respecto al manejos de gr\'{a}ficos.
+
+\subsection{Directorio de im\'agenes}
+Cuando se agrega una referencia a una imagen en un documento .tex, esta cuando sea compilada por el Latex buscara a la imagen en el directorio en el que se encuentra el .tex. A continuaci\'{o}n, se presentan las formas en las que se puede modificar dicho directorio.
+
+\lstset{language=Java}
+\begin{lstlisting}
+%Ruta relativa al archivo .tex 
+\graphicspath{ {./images/} }
+
+%Ruta absoluta
+\graphicspath{ {c:/user/images/} }
+\end{lstlisting}
+
+Ambas formas tienen que incorporarse al principio del .tex.
+
+\subsection{Modificar tama\~no y rotaci\'on}
+La imagen por insertar en el documento tiene que existir en directorio de im\'{a}genes especificado en el Latex. El c\'{o}digo para insertarlo es el siguiente.
+
+\lstset{language=Java}
+\begin{lstlisting}
+\includegraphics[scale=1]{latex-logo}
+\end{lstlisting}
+
+Se recalca que la imagen latex-logo no tiene extensi\'{o}n de archivo. 
+La imagen a continuaci\'{o}n es el resultado del c\'{o}digo anterior y ser\'{a} utilizada como punto de referencia para las dem\'{a}s modificaciones.
+
+\includegraphics[scale=0.2]{latex-logo}
+
+En el c\'{o}digo el tama\~{n}o de la imagen puede ser modificado por [scale=1] con un valor mayor o menor, o puede ser cambiado por [width=x cm, height= x cm].
+
+\lstset{language=Java}
+\begin{lstlisting}
+\includegraphics[width=3cm, height=4cm]{latex-logo}
+\end{lstlisting}
+
+\includegraphics[width=3cm, height=4cm]{latex-logo}
+
+El cambio se observa como:
+
+\lstset{language=Java}
+\begin{lstlisting}
+\includegraphics[width=\textwidth]{latex-logo}
+\end{lstlisting}
+
+Como adici\'{o}n a lo anterior, se puede tomar el ancho del texto como referencia para el ancho de la imagen con \textbackslash{}textwidth.\par{}
+La modificaci\'{o}n de la orientaci\'{o}n de la imagen se ve cambiado por el par\'{a}metro angle en t\'{e}rminos de 360 grados.
+
+\lstset{language=Java}
+\begin{lstlisting}
+\includegraphics[scale=0.5, angle=45]{latex-logo}
+\end{lstlisting}
+\includegraphics[scale=0.1, angle=45]{latex-logo}
+
+\subsection{Posicionamiento}
+
+\lstset{language=Java}
+\begin{lstlisting}
+\begin{figure}[posicionamiento]
+\includegraphics[width=8cm]{latex-logo}
+\end{figure}
+\end{lstlisting}
+
+Texto 
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cl}
+\hline
+\multicolumn{1}{l}{\textbf{Par\'ametro}} & \textbf{Posicionamiento}                                                                                                                                                                      \\ \hline
+h                                      & \begin{tabular}[c]{@{}l@{}}Coloque el flotador aqu\'i, es decir, aproximadamente en el\\ mismo punto en el que aparece el texto fuente (sin embargo,\\ no exactamente en el punto).\end{tabular} \\ \hline
+t                                      & Posici\'on en la parte superior de la p\'agina.                                                                                                                                                   \\ \hline
+b                                      & Posici\'on en la parte inferior de la p\'agina.                                                                                                                                                   \\ \hline
+p                                      & Se pone en una p\'agina especial para flotadores solamente.                                                                                                                                     \\ \hline
+!                                      & Anula los par\'ametros internos que LaTeX est\'e utilizando.                                                                                                                                      \\ \hline
+H                                      & \begin{tabular}[c]{@{}l@{}}Coloca el flotador exactamente en la ubicaci\'on del c\'odigo \\LaTeX. Requiere el paquete flotante. Esto es algo equiva-\\lente a h!.\end{tabular}                     \\ \hline
+\end{tabular}
+\end{table}
+\subsection{Referenciar figuras}
+Texto 
+\lstset{language=Java}
+\begin{lstlisting}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.25\textwidth]{grafico}
+\label{fig:refejem1}
+\end{figure}
+ 
+Como puede ver en la figura \ref{fig:refejem1}, en la P.# \pageref{fig:refejem1}.
+\end{lstlisting}
+
+Las referencias una vez compiladas se ven como:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\textwidth]{grafico}
+    \caption{refejem1}
+    \label{fig:refejem1}
+\end{figure}
+ 
+En la figura \ref{fig:refejem1} en la P.\# \pageref{fig:refejem1}.
 
 \section{Manejo de figuras al lado de tablas (minipage)}
-\subsection{Subsection 1}
-Text here.
+El minipage es una funcionalidad de Latex utilizada para poner lado a lado estructuras que de otra forma ser\'{\i}a dif\'{\i}cil, su armaz\'{o}n en c\'{o}digo se ve como:
+
+\begin{lstlisting}
+\begin{minipage}[ajuste]{ancho del minipage}
+  Texto ... \ \
+  Imagenes ... \ \
+  Tablas ... \ \
+\end{minipage} 
+\end{lstlisting}
+
+Partiendo de esta implementaci\'{o}n se pueden crear diferentes configuraciones.
+
+Ejemplo de tabla + tabla.
+
+\begin{lstlisting}
+\begin{minipage}{0.2\textwidth}
+\begin{tabular}{|c|c|c|}
+\hline
+ A & B & C \\
+\hline
+ 1 & 2 & 3  \\
+\hline 
+ 4 & 5 & 6 \\
+\hline
+\end{tabular}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+\begin{tabular}{c|c|c}
+ A & B & C \\
+\hline
+ 1 & 2 & 3  \\
+\hline 
+ 4 & 5 & 6 \\
+\end{tabular}
+\end{minipage}
+\end{lstlisting}
+
+\begin{minipage}{0.2\textwidth}
+\begin{tabular}{|c|c|c|}
+\hline
+ A & B & C \\
+\hline
+ 1 & 2 & 3  \\
+\hline 
+ 4 & 5 & 6 \\
+\hline
+\end{tabular}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+\begin{tabular}{c|c|c}
+ A & B & C \\
+\hline
+ 1 & 2 & 3  \\
+\hline 
+ 4 & 5 & 6 \\
+\end{tabular}
+\end{minipage}
+\\
+\\
+Ejemplo de imagen + texto.
+
+\begin{lstlisting}
+\begin{minipage}[t]{0.2\textwidth}
+\includegraphics[scale=0.4]{tec-logo}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+Tecnologico de CR\\
+Tecnologico de CR\\
+Tecnologico de CR\\
+Tecnologico de CR\\
+Tecnologico de CR\\
+\end{minipage}
+\end{lstlisting}
+
+\begin{minipage}[t]{0.2\textwidth}
+\includegraphics[scale=0.4]{tec-logo}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+Tecnol\'{o}gico de CR\\
+Tecnol\'{o}gico de CR\\
+Tecnol\'{o}gico de CR\\
+Tecnol\'{o}gico de CR\\
+Tecnol\'{o}gico de CR\\
+\end{minipage}
+
+Ejemplos de imagen + imagen + imagen.
+
+\begin{lstlisting}
+\begin{minipage}[b]{0.15\textwidth}
+\includegraphics[width=\textwidth]{tec-logo}
+\end{minipage}
+\begin{minipage}[t]{0.15\textwidth}
+\includegraphics[width=\textwidth]{tec-logo}
+\end{minipage}
+\begin{minipage}[t]{0.15\textwidth}
+\includegraphics[width=\textwidth]{tec-logo}
+\end{minipage}
+\end{lstlisting}
+
+\begin{minipage}[b]{0.15\textwidth}
+\includegraphics[width=\textwidth]{tec-logo}
+\end{minipage}
+\begin{minipage}[t]{0.15\textwidth}
+\includegraphics[width=\textwidth]{tec-logo}
+\end{minipage}
+\begin{minipage}[t]{0.15\textwidth}
+\includegraphics[width=\textwidth]{tec-logo}
+\end{minipage}
 
 \section{Ecuaciones matem\'aticas}
-\subsection{Subsection 1}
-Text here.
+En este segmento se presentan las caracter\'{\i}sticas b\'{a}sicas para generar f\'{o}rmulas matem\'{a}ticas en Latex.
+
+\subsection{Modo matem\'{a}ticas}
+Latex permite dos tipos de f\'{o}rmulas: inline y display, la primera permite escribir la f\'{o}rmula en l\'{\i}nea con el texto y la segunda lo opuesto, por lo que cuando se escriba ocupar\'{a} una l\'{\i}nea completa por si sola.\par
+Las f\'{o}rmulas \textquotedblleft{}inline\textquotedblright{} se caracterizan por estar delimitadas por \textdollar{}formula\textdollar{} y las \textquotedblleft{}display\textquotedblright{} por \textdollar{}\textdollar{}formula\textdollar{}\textdollar{} o \textbackslash{}begin\{equation\} formula \textbackslash{}end\{equation\}. Cabe recalcar que en el modo inline las expresiones son compresas para seguir con la l\'{\i}nea del texto.
+
+Ejemplo de inline:
+
+\begin{lstlisting}
+La formula $E=MC^2$ fue formulada por Einstein anos despues de presentar su teoria de la relativadad.
+\end{lstlisting}
+
+La f\'{o}rmula $E=MC^2$ fue formulada por Einstein a\~{n}os despu\'{e}s de presentar su teor\'{i}a de la relativadad.
+
+Ejemplo de display:
+\begin{lstlisting}
+La formula $$E=MC^2$$ fue formulada por Einstein anos despues de presentar su teoria de la relativadad.En unidades naturales ($c$ = 1), representa la identidad
+
+\begin{equation}
+E = m
+\end{equation}
+\end{lstlisting}
+La f\'{o}rmula $$E=MC^2$$ fue formulada por Einstein a\~{n}os despu\'{e}s de presentar su teor\'{i}a de la relativadad.En unidades naturales ($c$ = 1), representa la identidad
+
+\begin{equation}
+E = m
+\end{equation}
+
+\subsection{S\'{i}mbolos especiales}
+La utilizaci\'{o}n de s\'{\i}mbolos especiales se da por el modo matem\'{a}tica explicado en el punto anterior, solamente basta escribir \textbackslash{}simbolo dentro de los \textdollar{} \textdollar{}.
+
+\begin{lstlisting}
+$$\delta \alpha$$
+\end{lstlisting}
+
+$$\delta \alpha$$
+
+\subsection{Fracciones}
+
+Las fracciones pueden ser utilizadas en conjunto con el texto $\frac{1}{2} $ o por si solas con los modos inline y display.
+
+$$\frac{1}{2} $$
+
+Las fracciones son muy vers\'{a}tiles, pudiendo ser anidadas para expresiones complejas.
+
+\begin{lstlisting}
+Ejemplo sencillo:
+
+$$\frac{1}{2}$$
+
+Ejemplo anidado:
+ 
+$$ \frac{1+\frac{a}{b}}{1+\frac{1}{1+\frac{1}{a}}} $$
+ 
+\end{lstlisting}
+
+Ejemplo sencillo:
+
+$$\frac{1}{2}$$
+
+Ejemplo anidado:
+ 
+$$ \frac{1+\frac{a}{b}}{1+\frac{1}{1+\frac{1}{a}}} $$
+ 
+\subsection{Operadores}
+El manejo de operadores es muy variado por lo que a continuaci\'{o}n se explican los m\'{a}s utilizados.
+
+$$\int_{a}^{b} x^2 dx$$
+
+Las integrales como la anterior son definidas en Latex como:
+
+\begin{lstlisting}
+\int_{superior}^{inferior}
+
+$$\int_{a}^{b} x^2 dx$$
+\end{lstlisting}
+
+Integrales anidadas pueden resultar más complejas, pero se pueden obtener modificando el inicio de la expresión (int) como en los siguientes ejemplos:
+\begin{lstlisting}
+$$\iint_V \mu(u,v) \,du\,dv$$
+$$\iiint_V \mu(u,v,w) \,du\,dv\,dw$$
+$$\idotsint_V \mu(u_1,\dots,u_k) \,du_1 \dots du_k$$
+\end{lstlisting}
+
+$$\iint_V \mu(u,v) \,du\,dv$$
+$$\iiint_V \mu(u,v,w) \,du\,dv\,dw$$
+$$\idotsint_V \mu(u_1,\dots,u_k) \,du_1 \dots du_k$$
+
+Al igual que las integrales, las sumatorias est\'{a}n dadas por:
+\begin{lstlisting}
+\sum_{superior}^{inferior}
+
+Ejemplo:
+Sum $\sum_{n=1}^{\infty} 2^{-n} = 1$ inside text
+\end{lstlisting}
+
+$$\sum_{n=1}^{\infty} 2^{-n} = 1$$
+
+En el caso de los l\'{i}mites se utiliza el comando
+
+\begin{lstlisting}
+\lim_{lower}
+
+Ejemplo:
+$$\lim_{x\to\infty} f(x)$$
+\end{lstlisting}
+
+$$\lim_{x\to\infty} f(x)$$
 
 \section{Manejo de colores}
-\subsection{Subsection 1}
-Text here.
+El manejo de colores en Latex est\'{a} dado por los paquetes
 
+\begin{lstlisting}
+\usepackage{color}
+\usepackage{xcolor}
+\end{lstlisting}
+
+Ambos paquetes permiten la manipulaci\'{o}n de colores, pero a la vez tiene la flexibilidad de modificar los colores y secciones a gusto. El siguiente ejemplo muestra los colores predefinidos.
+
+\begin{lstlisting}
+\begin{itemize}
+\color{blue}
+\item Primer item
+\item Segundo item
+\end{itemize}
+ 
+\noindent
+{\color{red} \rule{\linewidth}{0.5mm} }
+\end{lstlisting}
+
+\begin{itemize}
+\color{blue}
+\item Primer item
+\item Segundo item
+\end{itemize}
+ 
+\noindent
+{\color{red} \rule{\linewidth}{0.5mm} }
+
+Los colores red y blue est\'{a} predefinidos en el paquete color, algunos otros ejemplos b\'{a}sicos son.
+
+\begin{lstlisting}
+El color del texto puede ser cambiado a \textcolor{red}{rojo}. Tambien puede cambiar el background del \colorbox{BurntOrange}{texto}.
+\end{lstlisting}
+
+El color del texto puede ser cambiado a \textcolor{red}{rojo}. Tambien puede cambiar el background del \colorbox{orange}{texto}.\par{}
+
+Para una mayor variedad de colores se pueden crear variables de color d\'{a}ndole una etiqueta a un valor RGB.
+
+\begin{lstlisting}
+\definecolor{rosado}{rgb}{0.858, 0.188, 0.478}
+\definecolor{gris}{gray}{0.6}
+\end{lstlisting}
+
+\definecolor{rosado}{rgb}{0.858, 0.188, 0.478}
+\definecolor{gris}{gray}{0.6}
+
+\begin{enumerate}
+\item \textcolor{rosado}{Rosado}
+\item \textcolor{gris}{Gris}
+\end{enumerate}
+
+El definecolor utiliza una de las siguientes 4 opciones para el primer par\'{a}metro.
+
+\begin{enumerate}
+\item \textbf{rgb}: rojo, verde, azul. Tres valores separados por comas entre 0 y 1 definen los componentes del color.
+\item \textbf{RGB}: lo mismo que rgb, pero los n\'{u}meros son enteros entre 0 y 255.
+\item \textbf{cmyk}: cian, magenta, amarillo y blacK. Lista de cuatro n\'{u}meros separados por comas entre 0 y 1 que determina el color de acuerdo con el modelo aditivo utilizado en la mayor\'{\i}a de las impresoras.
+\item \textbf{gray}: escala de grises. Un solo n\'{u}mero entre 0 y 1.
+\end{enumerate}
+
+Adem\'{a} de modificar el color del texto de puede cambiar el color de la p\'{a}gina con
+
+\begin{lstlisting}
+\pagecolor{black}
+\end{lstlisting}
+
+\includegraphics[scale=1]{ejemplofondo}
 
 \begin{thebibliography}{1}
 \bibitem{[1]}The Editors of Encyclopaedia Britannica  (2013) \emph{LaTeX COMPUTER PROGRAMMING LANGUAGE} [Blog post]. Consultado desde https://www.britannica.com/technology/LaTeX-computer-programming-language
 \bibitem{[2]} \emph{Introduction to LaTeX.} (2018). Consultado desde https://www.latex-project.org/about/
 \bibitem{[3]} \emph{Basic description of file types and how LaTeX works.} (2018). Consultado desde http://personal.bgsu.edu/~zirbel/5920/latex/latex\_basics.htm
-
+\bibitem{a} \emph{Latex-Tutorial.} (2018). Consultado desde https://www.latex-tutorial.com
+\bibitem{b} \emph{ShareLatex.} (2018). Consultado desde https://www.sharelatex.com/learn
+\bibitem{c} \emph{Sascha-Frank.} (2018). Consultado desde http://www.sascha-frank.com
 
 
 \end{thebibliography}
